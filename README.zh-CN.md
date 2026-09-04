@@ -1,5 +1,9 @@
 # project-evolution
 
+<p align="center">
+  <img src="assets/readme/hero-zh.svg" alt="project-evolution 项目进化闭环" width="100%" />
+</p>
+
 **一个围绕项目目的和真实用户任务，持续改进软件项目的 Codex Skill。**
 
 [English](README.md) · [工作流](references/workflow.md) · [更新记录](CHANGELOG.md)

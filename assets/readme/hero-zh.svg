@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="380" viewBox="0 0 1200 380" role="img" aria-labelledby="title desc">
+  <title id="title">project-evolution — 围绕项目目的持续改进</title>
+  <desc id="desc">连接项目目的、用户任务、研究、改进假设与验证的项目进化闭环。</desc>
+  <rect width="1200" height="380" rx="24" fill="#0B0F14"/>
+  <path d="M56 300H1144" stroke="#24303B" stroke-width="1"/>
+  <path d="M56 74H1144" stroke="#24303B" stroke-width="1"/>
+  <g font-family="Segoe UI, -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif">
+    <text x="64" y="64" fill="#5EEAD4" font-size="16" font-weight="700" letter-spacing="2">CODEX SKILL / ALPHA 14.2</text>
+    <text x="64" y="142" fill="#F4F7FA" font-size="48" font-weight="700">project-evolution</text>
+    <text x="64" y="184" fill="#C7D0D9" font-size="22">围绕项目目的、用户、证据，</text>
+    <text x="64" y="214" fill="#C7D0D9" font-size="22">持续提出改进并按标准复核结果。</text>
+    <text x="64" y="270" fill="#8D9AA7" font-size="15">研究  /  机会  /  假设  /  验证</text>
+  </g>
+  <g transform="translate(700 92)" font-family="Segoe UI, -apple-system, BlinkMacSystemFont, 'Microsoft YaHei', sans-serif">
+    <path d="M48 96H390" stroke="#5EEAD4" stroke-width="2" opacity=".8"/>
+    <path d="M390 96l-10-6v12z" fill="#5EEAD4"/>
+    <g>
+      <circle cx="48" cy="96" r="34" fill="#101A20" stroke="#5EEAD4" stroke-width="2"/>
+      <text x="48" y="92" text-anchor="middle" fill="#F4F7FA" font-size="14" font-weight="700">目的</text>
+      <text x="48" y="111" text-anchor="middle" fill="#8D9AA7" font-size="11">上下文</text>
+    </g>
+    <g>
+      <circle cx="162" cy="96" r="34" fill="#171716" stroke="#F6C453" stroke-width="2"/>
+      <text x="162" y="92" text-anchor="middle" fill="#F4F7FA" font-size="14" font-weight="700">差距</text>
+      <text x="162" y="111" text-anchor="middle" fill="#8D9AA7" font-size="11">证据</text>
+    </g>
+    <g>
+      <circle cx="276" cy="96" r="34" fill="#101A20" stroke="#5EEAD4" stroke-width="2"/>
+      <text x="276" y="92" text-anchor="middle" fill="#F4F7FA" font-size="14" font-weight="700">验证</text>
+      <text x="276" y="111" text-anchor="middle" fill="#8D9AA7" font-size="11">基线</text>
+    </g>
+    <g>
+      <circle cx="390" cy="96" r="34" fill="#171716" stroke="#F6C453" stroke-width="2"/>
+      <text x="390" y="92" text-anchor="middle" fill="#F4F7FA" font-size="14" font-weight="700">沉淀</text>
+      <text x="390" y="111" text-anchor="middle" fill="#8D9AA7" font-size="11">复用</text>
+    </g>
+    <path d="M390 146C390 216 48 216 48 146" fill="none" stroke="#52616D" stroke-width="1.5" stroke-dasharray="5 7"/>
+    <path d="M48 146l-8 10h16z" fill="#52616D"/>
+    <text x="218" y="188" text-anchor="middle" fill="#8D9AA7" font-size="13">有限、可追溯、可复核的进化闭环</text>
+  </g>
+</svg>

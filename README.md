@@ -1,5 +1,9 @@
 # project-evolution
 
+<p align="center">
+  <img src="assets/readme/hero-en.svg" alt="project-evolution continuous improvement loop" width="100%" />
+</p>
+
 **A purpose-driven Codex Skill for continuous software improvement.**
 
 [中文说明](README.zh-CN.md) · [Workflow](references/workflow.md) · [Changelog](CHANGELOG.md)
