@@ -1,39 +1,34 @@
-# project-evolution
+<p align="right">
+  <strong>English</strong> · <a href="./README.zh-CN.md">简体中文</a>
+</p>
 
 <p align="center">
-  <img src="assets/readme/hero-en.svg" alt="project-evolution continuous improvement loop" width="100%" />
+  <img src="./assets/readme/hero-en.svg" width="100%" alt="project-evolution: an evidence-led loop for improving software around its purpose and real user tasks.">
 </p>
 
 **A purpose-driven Codex Skill for continuous software improvement.**
 
-[中文说明](README.zh-CN.md) · [Workflow](references/workflow.md) · [Changelog](CHANGELOG.md)
+`project-evolution` turns a repository and its real user tasks into a bounded improvement loop: understand the project, find a meaningful gap, research relevant references, propose a testable change, and verify what happened next.
 
-> Research the gap. Propose the change. Verify the result.
+## The proof
 
-`project-evolution` helps a software project improve around its real purpose and users' real tasks. It combines project context, business feature mapping, focused research, improvement hypotheses, and later verification into one traceable loop.
+<p align="center">
+  <img src="./assets/readme/proof-en.svg" width="100%" alt="ProjectProfile, FeatureMap, Evidence, Hypothesis, and RunResult form a traceable record chain.">
+</p>
 
-## What it does
+These are real records in the Skill's data contract, not marketing labels. Each record has a defined role, evidence requirements, and a place in the next run.
 
-- Builds a project profile from the repository and available project records.
-- Separates current, pending, and recently completed work.
-- Maps business capabilities, not just folders and source files.
-- Compares a concrete gap with relevant mature references.
-- Produces an evidence-backed opportunity, hypothesis, baseline, and Markdown report.
-- Preserves decisions and verification history for the next run.
+## Why it is different
 
-## What it does not do
+| Common review | project-evolution |
+| --- | --- |
+| Starts from folders, files, or generic checklists | Starts from the project's purpose and a real user task |
+| Treats “exists” as “works” | Separates existence, usability, usefulness, and maturity |
+| Produces advice without a comparison point | Links the gap to focused research and mature references |
+| Ends with a recommendation | Creates a baseline, acceptance rule, decision, and later result |
+| Uses automation output as proof of experience | Labels evidence from static inspection to live user behavior |
 
-This is a **decision-support Skill**, not an autonomous coding platform. It does not:
-
-- edit business code;
-- deploy or write to production;
-- push to GitHub;
-- decide product direction for you;
-- claim that static checks prove real user satisfaction.
-
-The current release is **Alpha / Personal Limited Release**. Automatic change detection, real target-user testing, and a complete before/after verification loop still require project-specific adapters.
-
-## The evolution loop
+## How the loop works
 
 ```mermaid
 flowchart LR
@@ -49,33 +44,49 @@ flowchart LR
     J --> B
 ```
 
-Every run has a bounded focus, explicit evidence, a stopping condition, and a clear next action.
+The loop is intentionally bounded. It does not expand into a full-project audit when there is no evidence or decision to support it.
 
-## Quick start
+## First use
 
-Run the read-only adapter against a project. It writes project-evolution records to the output directory you choose.
+In Codex, call `$project-evolution` with a project directory. For a first local pass, use the read-only adapter:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/static-project-adapter.ps1 `
   -ProjectPath "C:\path\to\your-project" `
   -ProjectId "demo-project" `
   -OutputDir "C:\path\to\your-project\docs\project-evolution"
-
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/extract_project_context.ps1 `
-  -ProjectPath "C:\path\to\your-project" `
-  -ProjectId "demo-project" `
-  -OutputDir "C:\path\to\your-project\docs\project-evolution"
 ```
 
-Then open `latest-report.md`. It is the human-facing entry point; JSON files are retained for traceability and machine validation.
+Then open `latest-report.md`. It is the human-facing entry point. JSON records remain available for traceability and validation.
+
+For a focused run, use a prompt like:
+
+```text
+Use $project-evolution on this project.
+Read the current project context and choose one high-value user task.
+Research only the concrete gap you can support with evidence.
+Propose improvements with a baseline and acceptance criteria.
+Do not modify code or deploy anything. Stop after the report.
+```
 
 ## Run modes
 
-| Mode | Use when | Scope |
+| Mode | Best for | Scope |
 | --- | --- | --- |
-| `quick` | You need a lightweight check | History + one focus; no active research |
-| `normal` | You want a regular improvement cycle | One focus, limited verification, one research goal |
-| `deep` | A high-value or uncertain gap needs study | One focus, several tasks, bounded source research |
+| `quick` | A lightweight status pass | History + one focus; no active research |
+| `normal` | A regular improvement cycle | One focus, limited verification, one research goal |
+| `deep` | A high-value or uncertain gap | One focus, several tasks, bounded source research |
+
+## Current boundaries
+
+This is an **Alpha / Personal Limited Release**. It is not:
+
+- an autonomous coding or deployment agent;
+- a replacement for product decisions or target-user research;
+- proof that a static scan means a feature is good to use;
+- a promise of better sales, conversion, or business results.
+
+Project-specific adapters are still needed for automatic change detection, real target-user testing, and complete before/after verification.
 
 ## Repository map
 
