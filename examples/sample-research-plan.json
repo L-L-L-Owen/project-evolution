@@ -1,0 +1,10 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-09-04T00:00:00Z",
+  "focus": "提高核心用户任务的完成质量",
+  "inputs": ["project-context.json", "feature-map.json"],
+  "sourceTracks": ["领域规范", "成熟产品", "用户体验"],
+  "status": "blocked_no_current_task",
+  "baselineSource": "none",
+  "scopeNote": "没有当前任务时只整理上下文，不生成当前改进假设。"
+}

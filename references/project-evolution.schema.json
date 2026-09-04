@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/project-evolution.schema.json",
+  "title": "project-evolution records",
+  "oneOf": [
+    { "$ref": "#/$defs/ProjectContext" },
+    { "$ref": "#/$defs/PurposeModel" },
+    { "$ref": "#/$defs/ProjectProfile" },
+    { "$ref": "#/$defs/FeatureMap" },
+    { "$ref": "#/$defs/Feedback" },
+    { "$ref": "#/$defs/Opportunity" },
+    { "$ref": "#/$defs/Hypothesis" },
+    { "$ref": "#/$defs/Evidence" },
+    { "$ref": "#/$defs/Decision" },
+    { "$ref": "#/$defs/ResearchSource" },
+    { "$ref": "#/$defs/ResearchConclusion" },
+    { "$ref": "#/$defs/RunResult" }
+  ],
+  "$defs": {
+    "dateTime": { "type": "string", "format": "date-time" },
+    "ProjectContext": {
+      "type": "object", "additionalProperties": false,
+      "required": ["projectId", "capturedAt", "purposeCandidates", "purposeStatus", "detectedFormFields", "workflowSteps", "latestCompletedJobId", "activeJobId", "pendingJobId", "currentRequestStatus", "currentRequestSource", "currentRequest", "latestCompletedRequest", "limits"],
+      "properties": {
+        "projectId": { "type": "string", "minLength": 1 },
+        "capturedAt": { "$ref": "#/$defs/dateTime" },
+        "purposeCandidates": { "type": "array", "items": { "type": "string" } },
+        "purposeStatus": { "enum": ["confirmed", "inferred_pending_user_decision", "unknown"] },
+        "detectedFormFields": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["id", "label", "source", "sensitive"], "properties": { "id": { "type": "string" }, "label": { "type": "string" }, "source": { "type": "string" }, "sensitive": { "type": "boolean" } } } },
+        "workflowSteps": { "type": "array", "items": { "type": "string" } },
+        "latestCompletedJobId": { "type": ["string", "null"] },
+        "activeJobId": { "type": ["string", "null"] },
+        "pendingJobId": { "type": ["string", "null"] },
+        "currentRequestStatus": { "enum": ["active", "pending", "completed", "unknown"] },
+        "currentRequestSource": { "enum": ["browser_snapshot", "persisted_active_job", "persisted_pending_job", "latest_completed_job", "none"] },
+        "currentRequest": { "type": ["object", "null"], "additionalProperties": true },
+        "latestCompletedRequest": { "type": ["object", "null"], "additionalProperties": true },
+        "limits": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "ProjectProfile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "projectType", "language", "framework", "runtime", "deployment", "server", "database", "capabilities", "adapterStatus", "createdAt", "updatedAt"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^profile-[a-z0-9-]+$" }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string" },
+        "projectType": { "type": "string" }, "language": { "type": "string" }, "framework": { "type": "string" }, "runtime": { "type": "string" }, "deployment": { "type": "string" },
+        "server": { "enum": ["present", "absent", "unknown", "not_applicable", "not_verified"] }, "database": { "enum": ["present", "absent", "unknown", "not_applicable", "not_verified"] },
+        "capabilities": { "type": "object", "additionalProperties": { "enum": ["present", "absent", "unknown", "not_applicable", "not_verified"] } }, "adapterStatus": { "enum": ["ready", "partial", "missing", "failed", "not_verified"] },
+        "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" }
+      }
+    },
+    "FeatureMap": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "features", "createdAt", "updatedAt"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^feature-map-[a-z0-9-]+$" }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string" },
+        "features": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["featureId", "name", "jobIds", "exists", "availability", "usability", "maturity", "evidenceRefs", "referenceRefs", "knownGaps"], "properties": {
+          "featureId": { "type": "string" }, "name": { "type": "string" }, "jobIds": { "type": "array", "items": { "type": "string" } }, "exists": { "enum": ["yes", "no", "unknown"] },
+          "availability": { "enum": ["usable", "broken", "partial", "unknown", "not_applicable", "not_verified"] }, "usability": { "enum": ["good", "friction", "poor", "unknown", "not_applicable", "not_verified"] }, "maturity": { "enum": ["basic", "developing", "mature", "unknown", "not_applicable", "not_verified"] },
+          "evidenceRefs": { "type": "array", "items": { "type": "string" } }, "referenceRefs": { "type": "array", "items": { "type": "string" } }, "knownGaps": { "type": "array", "items": { "type": "string" } }
+        } } },
+        "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" }
+      }
+    },
+    "PurposeModel": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "targetUsers", "coreProblem", "coreJobs", "successIndicators", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string", "pattern": "^purpose-[a-z0-9-]+$" }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string", "minLength": 1 }, "targetUsers": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }, "coreProblem": { "type": "object", "additionalProperties": false, "required": ["statement"], "properties": { "statement": { "type": "string", "minLength": 1 }, "evidenceRefs": { "type": "array", "items": { "type": "string" } } } }, "coreJobs": { "type": "array", "minItems": 1, "items": { "type": "object", "additionalProperties": false, "required": ["jobId", "task"], "properties": { "jobId": { "type": "string", "minLength": 1 }, "task": { "type": "string", "minLength": 1 }, "successDefinition": { "type": "string" } } } }, "successIndicators": { "type": "array", "items": { "type": "object", "additionalProperties": false, "required": ["indicatorId", "definition"], "properties": { "indicatorId": { "type": "string" }, "definition": { "type": "string" }, "unit": { "type": "string" } } } }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "Feedback": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "sourceType", "summary", "receivedAt", "userJobIds", "frequency", "impact", "evidenceStatus", "privacyClass", "redactionStatus", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string", "minLength": 1 }, "sourceType": { "enum": ["owner", "target_user", "support", "analytics", "research", "other"] }, "summary": { "type": "string", "minLength": 1 }, "sourceRef": { "type": ["string", "null"] }, "rawContentRef": { "type": ["string", "null"] }, "receivedAt": { "$ref": "#/$defs/dateTime" }, "userJobIds": { "type": "array", "items": { "type": "string" } }, "frequency": { "enum": ["one_off", "repeated", "unknown"] }, "impact": { "enum": ["low", "medium", "high", "unknown"] }, "evidenceStatus": { "enum": ["verified", "unverified", "conflicting", "insufficient"] }, "privacyClass": { "enum": ["public", "internal", "sensitive", "restricted"] }, "redactionStatus": { "enum": ["not_needed", "redacted", "pending"] }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "Opportunity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "userProblem", "unmetNeed", "affectedJobs", "purposeLink", "evidenceRefs", "referenceRefs", "expectedValue", "costBand", "complexityRisk", "status", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string", "minLength": 1 }, "userProblem": { "type": "string", "minLength": 1 }, "unmetNeed": { "type": "string", "minLength": 1 }, "affectedJobs": { "type": "array", "items": { "type": "string" } }, "purposeLink": { "type": "string", "minLength": 1 }, "evidenceRefs": { "type": "array", "items": { "type": "string" } }, "referenceRefs": { "type": "array", "items": { "type": "string" } }, "expectedValue": { "enum": ["low", "medium", "high", "unknown"] }, "costBand": { "enum": ["low", "medium", "high", "unknown"] }, "complexityRisk": { "enum": ["low", "medium", "high", "unknown"] }, "valueAssessment": { "type": ["object", "null"], "additionalProperties": false, "required": ["result", "benefit", "cost", "maintenanceBurden", "alternatives"], "properties": { "result": { "enum": ["pass", "fail", "unknown"] }, "benefit": { "type": "string" }, "cost": { "type": "string" }, "maintenanceBurden": { "type": "string" }, "alternatives": { "type": "string" } } }, "status": { "enum": ["candidate", "accepted", "deferred", "rejected", "in_progress", "verified"] }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "Hypothesis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "opportunityId", "statement", "changeProposal", "affectedJobs", "participantType", "baseline", "target", "observationWindow", "sideEffectsToCheck", "rollbackPlan", "status", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string", "minLength": 1 }, "opportunityId": { "type": "string", "minLength": 1 }, "statement": { "type": "string", "minLength": 1 }, "changeProposal": { "type": "string", "minLength": 1 }, "affectedJobs": { "type": "array", "items": { "type": "string" } }, "participantType": { "enum": ["owner", "internal", "target_user", "mixed", "unknown"] }, "baseline": { "type": "object", "additionalProperties": false, "required": ["metrics"], "properties": { "metrics": { "type": "array", "minItems": 1, "items": { "type": "object", "additionalProperties": false, "required": ["indicatorId", "value", "unit", "collectionMethod", "sampleDescription", "sampleSize", "collectedAt"], "properties": { "indicatorId": { "type": "string", "minLength": 1 }, "value": {}, "unit": { "type": "string", "minLength": 1 }, "collectionMethod": { "type": "string", "minLength": 1 }, "sampleDescription": { "type": "string", "minLength": 1 }, "sampleSize": { "type": "integer", "minimum": 0 }, "collectedAt": { "$ref": "#/$defs/dateTime" } } } } } }, "target": { "type": "object", "additionalProperties": false, "required": ["expectedChange", "passCondition", "failCondition"], "properties": { "expectedChange": { "type": "string", "minLength": 1 }, "passCondition": { "type": "string", "minLength": 1 }, "failCondition": { "type": "string", "minLength": 1 } } }, "observationWindow": { "type": "string", "minLength": 1 }, "sideEffectsToCheck": { "type": "array", "items": { "type": "string" } }, "rollbackPlan": { "type": "string", "minLength": 1 }, "status": { "enum": ["proposed", "approved", "verifying", "supported", "failed", "inconclusive", "reopened"] }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "Evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "type", "source", "capturedAt", "relatedJobIds", "relatedHypothesisIds", "evidenceLevel", "artifactRefs", "repeatability", "participantType", "dataClass", "confidence", "status", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string", "minLength": 1 }, "type": { "enum": ["static_scan", "automated_test", "user_task", "analytics", "research", "change_diff", "other"] }, "source": { "enum": ["adapter", "script", "user", "analytics", "web", "other"] }, "capturedAt": { "$ref": "#/$defs/dateTime" }, "relatedJobIds": { "type": "array", "items": { "type": "string" } }, "relatedHypothesisIds": { "type": "array", "items": { "type": "string" } }, "evidenceLevel": { "enum": ["L0", "L1", "L2", "L3", "L4"] }, "artifactRefs": { "type": "array", "items": { "type": "string" } }, "repeatability": { "enum": ["repeatable", "limited", "one_time", "unknown"] }, "participantType": { "enum": ["none", "owner", "internal", "target_user", "mixed", "unknown"] }, "dataClass": { "enum": ["public", "anonymized", "internal", "sensitive", "restricted"] }, "confidence": { "enum": ["low", "medium", "high"] }, "status": { "enum": ["valid", "invalid", "conflicting", "insufficient"] }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "Decision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "subjectId", "decision", "decidedBy", "decidedAt", "reason", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string", "minLength": 1 }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string", "minLength": 1 }, "subjectId": { "type": "string", "minLength": 1 }, "decision": { "enum": ["confirm_problem_exists", "confirm_trial_worthwhile", "accept_for_execution", "defer", "reject", "request_more_evidence", "confirm_change_effective", "approve_rule_promotion"] }, "decidedBy": { "enum": ["user", "delegated_human"] }, "decidedAt": { "$ref": "#/$defs/dateTime" }, "reason": { "type": "string", "minLength": 1 }, "allowedScope": { "type": ["string", "null"] }, "nextReviewAt": { "type": ["string", "null"], "format": "date-time" }, "monitorUntil": { "type": ["string", "null"], "format": "date-time" }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "ResearchSource": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "title", "site", "url", "queriedAt", "summary", "useFor", "credibility", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string" }, "schemaVersion": { "const": 1 }, "title": { "type": "string" }, "site": { "type": "string" }, "url": { "type": "string", "format": "uri" }, "publishedAt": { "type": ["string", "null"], "format": "date-time" }, "queriedAt": { "$ref": "#/$defs/dateTime" }, "summary": { "type": "string" }, "useFor": { "type": "string" }, "credibility": { "type": "string" }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "ResearchConclusion": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "schemaVersion", "projectId", "researchGoal", "sourceRefs", "supportsOpportunityIds", "supportsHypothesisIds", "adoptedConclusion", "rejectedConclusions", "conclusionStatus", "applicability", "createdAt", "updatedAt"],
+      "properties": { "id": { "type": "string" }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string" }, "researchGoal": { "type": "string" }, "sourceRefs": { "type": "array" }, "supportsOpportunityIds": { "type": "array" }, "supportsHypothesisIds": { "type": "array" }, "adoptedConclusion": { "type": "string" }, "rejectedConclusions": { "type": "array" }, "conclusionStatus": { "type": "string" }, "applicability": { "type": "string" }, "validUntil": { "type": ["string", "null"], "format": "date-time" }, "createdAt": { "$ref": "#/$defs/dateTime" }, "updatedAt": { "$ref": "#/$defs/dateTime" } }
+    },
+    "RunResult": {
+      "type": "object", "additionalProperties": false,
+      "required": ["runId", "schemaVersion", "projectId", "mode", "startedAt", "finishedAt", "currentState", "scope", "evidenceRefs", "findingIds", "opportunityIds", "hypothesisIds", "decisionIds", "blockedItems", "stopReason"],
+      "properties": { "runId": { "type": "string" }, "schemaVersion": { "const": 1 }, "projectId": { "type": "string" }, "mode": { "type": "string" }, "startedAt": { "$ref": "#/$defs/dateTime" }, "finishedAt": { "$ref": "#/$defs/dateTime" }, "currentState": { "enum": ["discovered", "reported", "awaiting-user-decision", "approved-awaiting-execution", "deferred", "rejected", "awaiting-more-evidence", "change-candidate-detected", "verifying", "supported", "failed", "inconclusive", "reopened"] }, "scope": { "type": "object", "additionalProperties": false, "required": ["jobs", "modules", "excluded"], "properties": { "jobs": { "type": "array" }, "modules": { "type": "array" }, "excluded": { "type": "array" } } }, "evidenceRefs": { "type": "array" }, "findingIds": { "type": "array" }, "opportunityIds": { "type": "array" }, "hypothesisIds": { "type": "array" }, "decisionIds": { "type": "array" }, "blockedItems": { "type": "array" }, "stopReason": { "enum": ["answered_focus", "no_new_evidence", "blocked", "user_decision_required", "budget_exhausted", "lock-unavailable", "partial-write"] } }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "projectId": "demo-project",
+  "capturedAt": "2026-09-04T00:00:00Z",
+  "purposeCandidates": ["帮助目标用户完成核心任务"],
+  "purposeStatus": "unknown",
+  "detectedFormFields": [],
+  "workflowSteps": [],
+  "latestCompletedJobId": null,
+  "activeJobId": null,
+  "pendingJobId": null,
+  "currentRequestStatus": "unknown",
+  "currentRequestSource": "none",
+  "currentRequest": null,
+  "latestCompletedRequest": null,
+  "limits": ["仅读取项目公开文件和已落盘记录"]
+}

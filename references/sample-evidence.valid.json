@@ -1,0 +1,19 @@
+{
+  "id": "evidence-demo-001",
+  "schemaVersion": 1,
+  "projectId": "demo-project",
+  "type": "user_task",
+  "source": "user",
+  "capturedAt": "2026-09-04T10:00:00Z",
+  "relatedJobIds": ["job-core"],
+  "relatedHypothesisIds": [],
+  "evidenceLevel": "L3",
+  "artifactRefs": [],
+  "repeatability": "repeatable",
+  "participantType": "target_user",
+  "dataClass": "anonymized",
+  "confidence": "medium",
+  "status": "valid",
+  "createdAt": "2026-09-04T10:00:00Z",
+  "updatedAt": "2026-09-04T10:00:00Z"
+}

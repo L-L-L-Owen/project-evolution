@@ -1,0 +1,9 @@
+docs/automation/
+project-evolution-trial/
+*.bak
+*.tmp-*
+current-request.json
+latest-completed-request.json
+research-source-*.json
+research-conclusion-*.json
+*.log
