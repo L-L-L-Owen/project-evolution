@@ -35,9 +35,9 @@
 
 ## The evolution loop
 
-| 1. Understand | 2. Find the gap | 3. Research and propose | 4. User decides and implements | 5. Verify with the same criteria |
-| --- | --- | --- | --- | --- |
-| Purpose, users, and real tasks | Function, experience, reliability, and value | Mature references, baseline, goal, and risk | Accept, defer, reject, or request evidence | Support, fail, inconclusive, or reopen |
+<p align="center">
+  <img src="./assets/readme/evolution-loop-en.png" width="100%" alt="The evolution loop: understand the project, find gaps, propose a change, and review results.">
+</p>
 
 Every run has one clear focus. With no evidence, no current task, or no user decision to support, the Skill stops explicitly instead of manufacturing a broad review report.
 
