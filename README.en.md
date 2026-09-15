@@ -5,10 +5,7 @@
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/readme/hero-en.svg">
-    <img src="./assets/readme/hero-en.gif" width="100%" alt="project-evolution: help websites, apps, Skills, and automation evolve around their real purpose.">
-  </picture>
+  <img src="./assets/readme/hero-en.svg" width="100%" alt="project-evolution: help websites, apps, Skills, and automation evolve around their real purpose.">
 </p>
 
 <p align="center">
@@ -39,7 +36,7 @@
 ## The evolution loop
 
 <p align="center">
-  <img src="./assets/readme/evolution-loop-en.png" width="760" alt="The evolution loop: understand the project, find gaps, propose a change, and review results.">
+  <img src="./assets/readme/evolution-loop-en.png" width="100%" alt="The evolution loop: understand the project, find gaps, propose a change, and review results.">
 </p>
 
 Every run has one clear focus. With no evidence, no current task, or no user decision to support, the Skill stops explicitly instead of manufacturing a broad review report.
