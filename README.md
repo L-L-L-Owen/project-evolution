@@ -1,112 +1,136 @@
 <p align="right">
-  <strong>English</strong> · <a href="./README.zh-CN.md">简体中文</a>
+  <strong>简体中文</strong>
+  &nbsp;|&nbsp;
+  <a href="./README.en.md"><img alt="English" src="https://img.shields.io/badge/English-087F76?style=flat-square"></a>
 </p>
 
 <p align="center">
-  <img src="./assets/readme/hero-en.svg" width="100%" alt="project-evolution: an evidence-led loop for improving software around its purpose and real user tasks.">
+  <img src="./assets/readme/hero-zh.svg" width="100%" alt="project-evolution：让网站、App、Skill 与自动化工具围绕真实目的持续进化。">
 </p>
-
-**A purpose-driven Codex Skill for continuous software improvement.**
-
-`project-evolution` turns a repository and its real user tasks into a bounded improvement loop: understand the project, find a meaningful gap, research relevant references, propose a testable change, and verify what happened next.
-
-## The proof
 
 <p align="center">
-  <img src="./assets/readme/proof-en.svg" width="100%" alt="ProjectProfile, FeatureMap, Evidence, Hypothesis, and RunResult form a traceable record chain.">
+  <strong>一个适用于各类软件项目的证据驱动持续进化 Codex Skill。</strong>
 </p>
 
-These are real records in the Skill's data contract, not marketing labels. Each record has a defined role, evidence requirements, and a place in the next run.
+`project-evolution` 不把项目当成一次性“审查完就结束”的对象。它围绕项目真正要解决的问题和真实用户任务，建立一个可停止、可追溯、可复核的改进闭环：读懂项目，发现值得解决的差距，调研成熟参考，提出可验证的改变，再把结果带回下一轮。
 
-## Why it is different
+<table>
+  <tr>
+    <td width="25%"><strong>网站 / Web App</strong><br>用户流程、转化、后台、内容与体验</td>
+    <td width="25%"><strong>移动 App</strong><br>首次使用、核心任务、留存与反馈</td>
+    <td width="25%"><strong>Skill / 提示词</strong><br>输入、判断、输出与长期复用</td>
+    <td width="25%"><strong>自动化工具 / 其他项目</strong><br>可靠性、失败恢复、人工节点与价值</td>
+  </tr>
+</table>
 
-| Common review | project-evolution |
+## 为什么不是普通审查
+
+| 普通审查 | project-evolution |
 | --- | --- |
-| Starts from folders, files, or generic checklists | Starts from the project's purpose and a real user task |
-| Treats “exists” as “works” | Separates existence, usability, usefulness, and maturity |
-| Produces advice without a comparison point | Links the gap to focused research and mature references |
-| Ends with a recommendation | Creates a baseline, acceptance rule, decision, and later result |
-| Uses automation output as proof of experience | Labels evidence from static inspection to live user behavior |
+| 从目录、代码或通用清单开始 | 从项目目的、目标用户和真实任务开始 |
+| 把“功能存在”当成“项目可用” | 分开判断存在、可用、好用和成熟度 |
+| 给一批泛化建议 | 只围绕当前有证据支持的一个主焦点研究 |
+| 输出建议后结束 | 保留基线、验收条件、用户决定和后续结果 |
+| 把静态扫描或测试通过当成体验证明 | 标记 L0 到 L4 证据等级，明确哪些结论尚未验证 |
 
-## How the loop works
+## 项目进化闭环
 
 ```mermaid
 flowchart LR
-    A[Project context] --> B[Purpose and user task]
-    B --> C[Business feature map]
-    C --> D[Focused research]
-    D --> E[Opportunity and hypothesis]
-    E --> F[Baseline and acceptance criteria]
-    F --> G[User decision]
-    G --> H[User implements change]
-    H --> I[Repeatable verification]
-    I --> J[Keep, adjust, reject, or reopen]
+    A[读取项目上下文] --> B[确认目的与真实用户任务]
+    B --> C[建立业务功能地图]
+    C --> D[围绕具体差距调研]
+    D --> E[形成机会与改进假设]
+    E --> F[建立基线与验收条件]
+    F --> G[用户决定]
+    G --> H[用户执行改动]
+    H --> I[按原标准复核]
+    I --> J[保留 调整 撤销 或重开]
     J --> B
 ```
 
-The loop is intentionally bounded. It does not expand into a full-project audit when there is no evidence or decision to support it.
+每一轮只处理一个明确焦点。没有证据、没有当前任务或没有需要支持的用户决定时，Skill 会明确停下，不会为了显得专业而扩展成大而全的审查报告。
 
-## First use
+## 它会关注什么
 
-In Codex, call `$project-evolution` with a project directory. For a first local pass, use the read-only adapter:
+<table>
+  <tr>
+    <td width="33%"><strong>项目目的与产品价值</strong><br>功能是否真正服务设计目的，是否存在值得补足的能力。</td>
+    <td width="33%"><strong>真实用户任务与体验</strong><br>用户是否会卡住、绕路、误解或放弃；完成不等于好用。</td>
+    <td width="33%"><strong>功能成熟度</strong><br>功能是否完整、严谨、可解释，并能与成熟案例对比。</td>
+  </tr>
+  <tr>
+    <td><strong>逻辑、可靠性与安全</strong><br>错误、数据、权限、恢复路径和风险边界是否可控。</td>
+    <td><strong>研究与证据</strong><br>参考来源、适用范围、采用理由和结论是否可追溯。</td>
+    <td><strong>学习与复用</strong><br>有效经验是否被沉淀，让下一轮判断更准确、返工更少。</td>
+  </tr>
+</table>
+
+## 真实记录，而不是宣传标签
+
+<p align="center">
+  <img src="./assets/readme/proof-zh.svg" width="100%" alt="ProjectProfile、FeatureMap、Evidence、Hypothesis 和 RunResult 组成可追溯的记录链。">
+</p>
+
+`ProjectProfile`、`FeatureMap`、`Evidence`、`Hypothesis` 和 `RunResult` 都是 Skill 数据契约中的真实记录。它们分别记录项目画像、功能成熟度、证据等级、改进假设和复核结果，让下一轮不必从头猜测。
+
+## 它会做什么，以及不会越过什么边界
+
+| 会做 | 不会擅自做 |
+| --- | --- |
+| 读取项目上下文、静态页面线索和已落盘任务 | 自动修改业务代码、部署、推送或写入线上环境 |
+| 围绕具体差距整理研究与成熟参考 | 把静态扫描、自动化测试冒充真实用户体验通过 |
+| 输出面向用户的 Markdown 报告和可追溯记录 | 把历史任务冒充当前需求，或替用户决定产品方向 |
+| 记录用户决定、基线和后续复核入口 | 在没有证据时硬凑“发现”或泛化建议 |
+
+## 第一次使用
+
+在 Codex 中调用 `$project-evolution`，并指定一个项目目录。首次接入时，可先运行只读静态适配器：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/static-project-adapter.ps1 `
-  -ProjectPath "C:\path\to\your-project" `
+  -ProjectPath "C:\你的项目路径" `
   -ProjectId "demo-project" `
-  -OutputDir "C:\path\to\your-project\docs\project-evolution"
+  -OutputDir "C:\你的项目路径\docs\project-evolution"
 ```
 
-Then open `latest-report.md`. It is the human-facing entry point. JSON records remain available for traceability and validation.
+然后打开 `latest-report.md`。这是给项目使用者查看的主入口；结构化记录用于追溯和校验。
 
-For a focused run, use a prompt like:
+一轮定向进化可以这样开始：
 
 ```text
-Use $project-evolution on this project.
-Read the current project context and choose one high-value user task.
-Research only the concrete gap you can support with evidence.
-Propose improvements with a baseline and acceptance criteria.
-Do not modify code or deploy anything. Stop after the report.
+使用 $project-evolution 分析这个项目。
+读取当前项目上下文，并选择一个高价值的真实用户任务。
+只围绕有证据支持的具体差距做调研。
+提出带改前基线和验收条件的改进建议。
+不要修改代码或部署，报告完成后停止。
 ```
 
-## Run modes
+## 当前状态
 
-| Mode | Best for | Scope |
-| --- | --- | --- |
-| `quick` | A lightweight status pass | History + one focus; no active research |
-| `normal` | A regular improvement cycle | One focus, limited verification, one research goal |
-| `deep` | A high-value or uncertain gap | One focus, several tasks, bounded source research |
+当前版本是 **Alpha / 个人有限发布版**。已具备项目上下文提取、已落盘任务识别、业务功能地图、研究计划、研究记录和用户可读报告能力。
 
-## Current boundaries
+尚未完成自动变化检测、真实目标用户测试和完整的改前改后验证闭环。它不是自动编码或自动部署代理，也不承诺销售、转化或商业结果一定提升。
 
-This is an **Alpha / Personal Limited Release**. It is not:
-
-- an autonomous coding or deployment agent;
-- a replacement for product decisions or target-user research;
-- proof that a static scan means a feature is good to use;
-- a promise of better sales, conversion, or business results.
-
-Project-specific adapters are still needed for automatic change detection, real target-user testing, and complete before/after verification.
-
-## Repository map
+## 仓库结构
 
 ```text
-SKILL.md                         Skill entry point
-references/workflow.md           State machine and operating rules
+SKILL.md                         Skill 入口
+references/workflow.md           状态机和运行规则
 references/project-evolution.schema.json
-                                 Data contract
+                                 数据契约
 scripts/extract_project_context.ps1
-                                 Read-only context extraction
+                                 只读项目上下文提取
 scripts/static-project-adapter.ps1
-                                 Conservative static adapter
-scripts/validate_records.ps1    Local contract checks
-examples/                        Safe sample records
-tests/                           PowerShell test scripts
+                                 保守的静态适配器
+scripts/validate_records.ps1    本地契约校验
+examples/                        安全示例数据
+tests/                           测试说明
 ```
 
-## Verification
+## 验证
 
-Windows PowerShell 5.1 and PowerShell 7 are supported:
+支持 Windows PowerShell 5.1 和 PowerShell 7：
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test_project_context.ps1
@@ -116,18 +140,18 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test_user_input.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test_static_adapter.ps1
 ```
 
-## Data and privacy
+## 数据与隐私
 
-Keep real customer leads, emails, phone numbers, cookies, tokens, passwords, secrets, and production logs out of this repository. Store project-specific records in the project being reviewed, and inspect them before committing.
+不要把真实客户线索、邮箱、电话、Cookie、Token、密码、密钥或生产日志提交到本仓库。项目专属记录应保存在被审查的项目中，提交前请人工检查。
 
-## Roadmap
+## 路线图
 
-- Project-specific adapters for more project types.
-- Automatic change detection across runs.
-- Reusable before/after baselines.
-- Real target-user task validation.
-- Multi-run reports and stronger evidence synthesis.
+- 面向更多项目类型的专用适配器；
+- 跨轮次自动检测项目变化；
+- 复用改前与改后基线；
+- 真实目标用户任务验收；
+- 多轮报告更新与更强的证据综合。
 
-## License
+## 许可证
 
-MIT License. See [LICENSE](LICENSE).
+MIT License，见 [LICENSE](LICENSE)。
