@@ -5,7 +5,10 @@
 </p>
 
 <p align="center">
-  <img src="./assets/readme/hero-en.svg" width="100%" alt="project-evolution: help websites, apps, Skills, and automation evolve around their real purpose.">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/readme/hero-en.svg">
+    <img src="./assets/readme/hero-en.gif" width="100%" alt="project-evolution: help websites, apps, Skills, and automation evolve around their real purpose.">
+  </picture>
 </p>
 
 <p align="center">
@@ -35,19 +38,9 @@
 
 ## The evolution loop
 
-```mermaid
-flowchart LR
-    A[Read project context] --> B[Confirm purpose and real user task]
-    B --> C[Build a business feature map]
-    C --> D[Research a concrete gap]
-    D --> E[Form opportunity and hypothesis]
-    E --> F[Set baseline and acceptance criteria]
-    F --> G[User decision]
-    G --> H[User implements the change]
-    H --> I[Verify against the same criteria]
-    I --> J[Keep adjust revert or reopen]
-    J --> B
-```
+<p align="center">
+  <img src="./assets/readme/evolution-loop-en.png" width="760" alt="The evolution loop: understand the project, find gaps, propose a change, and review results.">
+</p>
 
 Every run has one clear focus. With no evidence, no current task, or no user decision to support, the Skill stops explicitly instead of manufacturing a broad review report.
 

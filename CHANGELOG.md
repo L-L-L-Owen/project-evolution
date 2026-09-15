@@ -1,5 +1,12 @@
 # Changelog
 
+## 14.2.1 - 2026-09-15
+
+- GitHub README 首屏改为轻量 GIF，并保留静态 SVG 作为减少动态效果时的替代资源。
+- 将 GitHub 上可能空白的 Mermaid 闭环图替换为稳定显示的中英文 PNG 图解。
+- 新增 `docs/index.html`：白色主题的完整项目主页，默认简体中文，可切换完整英文版，供 GitHub Pages 使用。
+- 补充页面动效、桌面与手机布局验证；本次未改动任何 Skill 功能脚本。
+
 ## 14.2 - 2026-09-04
 
 - 修复无当前任务时研究计划错误引用 `current-request.json`。

@@ -5,7 +5,10 @@
 </p>
 
 <p align="center">
-  <img src="./assets/readme/hero-zh.svg" width="100%" alt="project-evolution：让网站、App、Skill 与自动化工具围绕真实目的持续进化。">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="./assets/readme/hero-zh.svg">
+    <img src="./assets/readme/hero-zh.gif" width="100%" alt="project-evolution：让网站、App、Skill 与自动化工具围绕真实目的持续进化。">
+  </picture>
 </p>
 
 <p align="center">
@@ -35,19 +38,9 @@
 
 ## 项目进化闭环
 
-```mermaid
-flowchart LR
-    A[读取项目上下文] --> B[确认目的与真实用户任务]
-    B --> C[建立业务功能地图]
-    C --> D[围绕具体差距调研]
-    D --> E[形成机会与改进假设]
-    E --> F[建立基线与验收条件]
-    F --> G[用户决定]
-    G --> H[用户执行改动]
-    H --> I[按原标准复核]
-    I --> J[保留 调整 撤销 或重开]
-    J --> B
-```
+<p align="center">
+  <img src="./assets/readme/evolution-loop-zh.png" width="760" alt="项目进化闭环：理解项目、找到差距、提出改变、复核结果。">
+</p>
 
 每一轮只处理一个明确焦点。没有证据、没有当前任务或没有需要支持的用户决定时，Skill 会明确停下，不会为了显得专业而扩展成大而全的审查报告。
 
